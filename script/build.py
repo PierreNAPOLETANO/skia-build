@@ -42,10 +42,7 @@ def main():
       'skia_use_metal=true',
       'extra_cflags_cc=["-frtti"]'
     ]
-    if 'arm64' == machine:
-      args += ['extra_cflags=["-stdlib=libc++"]']
-    else:
-      args += ['extra_cflags=["-stdlib=libc++", "-mmacosx-version-min=10.13"]']
+    args += ['extra_cflags=["-stdlib=libc++"]'] if 'arm64' == machine else ['extra_cflags=["-stdlib=libc++", "-mmacosx-version-min=10.13"]']
   elif 'linux' == system:
     args += [
       'skia_use_system_freetype2=true',
